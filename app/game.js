@@ -3,50 +3,63 @@ import Dragon from './dragon';
 
 class Game {
   constructor(ctx) {
-    // super();
+    this.ctx = ctx;
     // this.canvas = canvas
     this.screen = new Screen(ctx);
-    this.dragon = new Dragon(ctx);
-    // debugger;
     this.dragons = [];
   }
 
-  drawScreen() {
-    this.screen.background();
+  loop(fn) {
+    requestAnimationFrame(() => this.loop(fn))
+    fn()
+  }
+
+  // drawScreen() {
+  //   this.screen.background();
+  // }
+  
+  destroyDragon(x, y) {
+    let i;
+    for (i = 0, i < this.dragons.length; i++;) {
+      if (this.dragons[i].x === x && this.dragons[i].y === y) {
+        this.dragons.splice(i, 1)
+      }
+    }
+  }
+   
+  makeDragon() {
+    let i;
+    for (i=0; i < 3; i++) {
+      this.dragons.push(new Dragon(this.ctx));
+    }     
   }
   
-  draw() {
-    // debugger
-    // console.log('hello');
-    this.screen.drawDragon();
-
+  play() {
+    this.loop(()=> {
+      this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      this.dragons.forEach(dragon => {
+        dragon.render()
+      })
+    });
   }
 
-  // drawDragon() {
-    // debugger
-  //   this.dragon.draw();
+  onClick(event) {
+    let cx = event.pageX;
+    let cy = event.pageY;
+    // console.log(cx, cy, this.x, this.y);
+    let dist = Math.hypot((event.pageX - this.x), (event.pageY - this.y))
+    if (dist < 20) {
+      alert(+cx+','+cy);
+      this.destroyDragon(cx, cy);
+    }
+  }
+
+  // targetEvent(event) {
+  //   this.screen.onClick(event); 
   // }
-
-  makeDragon() {
-    
-  }
-
-  targetEvent(event) {
-    this.screen.onClick(event); 
-  }
 
   drawSpear() {
     this.screen.drawWeapon();
-  }
-
-  // renderScreen() {
-  //   debugger
-  //   this.screen.render();
-  // };
-
-  render() {
-    // this.drawScreen;
-    // this.screen.render;
   }
 }
 

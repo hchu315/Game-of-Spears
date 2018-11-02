@@ -13,11 +13,11 @@ class Screen {
         this.y = 400;
         this.dx = 2;
         this.dy = 2;
-        setInterval(()=> { 
-          this.dx = this.randomdir[Math.round(Math.random())];
-          this.dy = this.randomdir[Math.round(Math.random())];
-          console.log(this.dx, this.dy);
-        }, 2000);
+        // setInterval(()=> { 
+        //   this.dx = this.randomdir[Math.round(Math.random())];
+        //   this.dy = this.randomdir[Math.round(Math.random())];
+        //   console.log(this.dx, this.dy);
+        // }, 2000);
 
         this.ballRadius = 50;
         // this.mouseX = 0;
@@ -58,27 +58,26 @@ class Screen {
     }
 
     onClick(event) {
-      console.log(event);
       let cx = event.pageX;
       let cy = event.pageY;
-      console.log(cx, cy, this.x, this.y);
+      // console.log(cx, cy, this.x, this.y);
+      // alert(+cx+','+cy);
       let dist = Math.hypot((event.pageX-this.x), (event.pageY-this.y))
       if (dist < this.ballRadius) {
         this.ballRadius = 0;
       }
-      // debugger;
     }
 
-    mousePressed() {
-      let clicked = dist(mouseX, mouseY, this.x, this.y)
-      if (clicked < this.ballRadius) {
-        this.ballRadius = 0;
-      }
-    }
+    // mousePressed() {
+    //   let clicked = dist(mouseX, mouseY, this.x, this.y)
+    //   if (clicked < this.ballRadius) {
+    //     this.ballRadius = 0;
+    //   }
+    // }
 
-    dist(x1, y1, x2, y2) {
+    // dist(x1, y1, x2, y2) {
 
-    }
+    // }
 
     drawWeapon() {
       const ctx = this.ctx;

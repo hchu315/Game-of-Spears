@@ -1,26 +1,24 @@
 class Dragon {
   constructor(ctx) {
     this.ctx = ctx;
-    this.randomdir = [-4, 4];
-    this.x = 300;
-    this.y = 400;
-    this.dx = 4;
-    this.dy = 4;
+    this.randomdir = [-2, 2];
+    this.x = Math.random() * (window.innerWidth);
+    this.y = Math.random() * (window.innerHeight);
+    this.dx = 2;
+    this.dy = 2;
     this.randomdir
     setInterval(() => {
       this.dx = this.randomdir[Math.round(Math.random())];
       this.dy = this.randomdir[Math.round(Math.random())];
     }, 2000);
 
-    this.ballRadius = 10;
+    this.ballRadius = 20;
   }
 
   draw() {
     const ctx = this.ctx;
     const dy = this.dy;
 
-
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI * 2);
     ctx.fillStyle = "black";
@@ -36,12 +34,20 @@ class Dragon {
 
   }
 
-  // mouseClicked() {
+  onClick(event) {
+    let cx = event.pageX;
+    let cy = event.pageY;
+    alert(+cx + ',' + cy);
+    // console.log(cx, cy, this.x, this.y);
+    let dist = Math.hypot((event.pageX - this.x), (event.pageY - this.y))
+    if (dist < this.ballRadius) {
+      this.destroyDragon(cx, cy);
+    }
+  }
 
-  // }
-  // render() {
-  //   this.drawDragon();
-  // }
+  render() {
+    this.draw();
+  }
 }
 
 export default Dragon;
