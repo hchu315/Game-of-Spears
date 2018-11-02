@@ -7,3 +7,20 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+.container {
+    // display: flex;
+    // // justify-content: center;
+    // align-items: center;
+    // background-color: red;
+    // overflow: auto;
+}
+
+#game-canvas {
+    border: dotted;
+
+}
+
+.cursor {
+    cursor: crosshair
+}
