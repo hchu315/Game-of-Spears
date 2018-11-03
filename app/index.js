@@ -24,31 +24,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
   
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = 1200;
+  canvas.height = 800;
+  canvas.style.display = 'block';
+  canvas.style.margin = '0 auto';
+  // canvas.style.padding = '30px';
+  canvas.style.marginTop = '80px';
+  // let game = new Game(ctx);
+  let game = new Game(ctx, canvas);
   
-  let game = new Game(ctx);
+  // const startGame = document.getElementById("start-game");
 
-  const startGame = document.getElementById("start-game");
+  // startGame.addEventListener("click", () => {
+  //   playGame();
+  // });  
+  function getMousePos(evt) {
+    let rect = canvas.getBoundingClientRect();
+    let x = (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width
+    let y = (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
 
-  startGame.addEventListener("click", () => {
-    playGame();
-  });  
-
-  canvas.addEventListener('mousedown', game.onClick.bind(game), false);
+    game.onClick(x, y);
+  }
+  
+  // canvas.addEventListener('mousedown', game.onClick.bind(game), false);
+  canvas.addEventListener('mousedown', getMousePos, false);
   
   // game.drawScreen();
   // game.drawSpear();
-
+  
   // loop(() => {
     // game.draw();
     // game.makeDragon();
     // game.render();
-  // });
+    // });
+    
+    const playGame = () => {
+      game.makeDragon();
+      game.play();
+    };
 
-  const playGame = () => {
-    game = new Game(ctx);
-    game.makeDragon();
-    game.play();
-  };
+    playGame();
+
 });
