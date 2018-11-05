@@ -51,7 +51,13 @@ class Dragon {
         // ctx.closePath();
         img.src = "assets/images/flying_dragon-red.png";
         // this.updateFrame();
-        ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+        // if (this.dx > 0) {
+          ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+        // } else {
+          // ctx.scale(-1, 1);
+          // ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+          // ctx.setTransform(1, 0, 0, 1, 0, 0);
+        // }
         // ctx.drawImage(img, 0, 150, 200, 200, 0, 0, 150, 150);
         if (this.y + this.dy > 600) {
           this.dy = -this.dy;

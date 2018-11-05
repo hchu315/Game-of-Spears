@@ -40,6 +40,11 @@ module.exports = {
     ],
     module: {
         rules: [
+            // ADDED
+            {
+                test: /\.html$/,
+                loader: 'html-loader'
+            },
             // BABEL
             {
                 test: /\.js$/,
