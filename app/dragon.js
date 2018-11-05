@@ -1,53 +1,72 @@
 class Dragon {
-  constructor(ctx) {
-    this.ctx = ctx;
-    this.randomdir = [-2, 2];
-    this.x = Math.random() * 50;
-    this.y = Math.random() * 50;
-    this.dx = 2;
-    this.dy = 2;
-    this.randomdir
-    setInterval(() => {
-      this.dx = this.randomdir[Math.round(Math.random())];
-      this.dy = this.randomdir[Math.round(Math.random())];
-    }, 2000);
+    constructor(ctx) {
+        this.ctx = ctx;
+        this.randomdir = [-2, 2];
+        // this.x = Math.random() * 600;
+        // this.y = Math.random() * 600;
+        this.x = 0;
+        this.y = 0;
+        this.dx = 2;
+        this.dy = 2;
+        this.randomdir;
+        setInterval(() => {
+            this.dx = this.randomdir[Math.round(Math.random())];
+            this.dy = this.randomdir[Math.round(Math.random())];
+        }, 2000);
+        // this.ballRadius = 20;
 
-    this.ballRadius = 20;
-  }
-
-  draw() {
-    const ctx = this.ctx;
-    const dy = this.dy;
-    // debugger
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = "black";
-    ctx.fill();
-    ctx.closePath();
-    if (this.y + this.dy > 650 - this.ballRadius) {
-      this.dy = -this.dy;
-    } else if (this.y + this.dy < 0 || this.x + this.dx < 0 || this.x > window.innerWidth - this.ballRadius) {
-
+        this.frameIndex = 0;
+        this.numberOfFrames = 3;
+        this.tickCount = 0;
+        this.ticksPerFrame = 20;
     }
-    this.x += this.dx;
-    this.y += this.dy;
 
-  }
+    updateFrame() {
+    //     this.currentFrame = ++this.currentFrame % 3;
+			
+      this.tickCount += 1;
 
-  // onClick(event) {
-  //   let cx = event.pageX;
-  //   let cy = event.pageY;
-  //   alert(+cx + ',' + cy);
-  //   // console.log(cx, cy, this.x, this.y);
-  //   let dist = Math.hypot((event.pageX - this.x), (event.pageY - this.y))
-  //   if (dist < this.ballRadius) {
-  //     this.destroyDragon(cx, cy);
-  //   }
-  // }
+      if (this.tickCount > this.ticksPerFrame) {
 
-  render() {
-    this.draw();
-  }
+       this.tickCount = 0;
+
+      // If the current frame index is in range
+        if (this.frameIndex < this.numberOfFrames - 1) {
+          // Go to the next frame
+          this.frameIndex += 1;
+        } else {
+          this.frameIndex = 0;
+        }
+      }
+    }
+
+    draw() {
+        const ctx = this.ctx;
+        const dy = this.dy;
+        let img = new Image();
+        // ctx.beginPath();
+        // ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI * 2);
+        // ctx.fillStyle = "black";
+        // ctx.fill();
+        // ctx.closePath();
+        img.src = "assets/images/flying_dragon-red.png";
+        // this.updateFrame();
+        ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+        // ctx.drawImage(img, 0, 150, 200, 200, 0, 0, 150, 150);
+        if (this.y + this.dy > 600) {
+          this.dy = -this.dy;
+        } 
+        // else if (this.y + this.dy < 0 || this.x + this.dx < 0 || this.x > window.innerWidth - this.ballRadius) {
+
+        // }
+        this.x += this.dx;
+        this.y += this.dy;
+    }
+
+    render() {
+        this.updateFrame();
+        this.draw();
+    }
 }
 
 export default Dragon;

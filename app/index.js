@@ -23,21 +23,25 @@ import Game from './game';
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
+  // const background = document.getElementById("background-canvas");
+  // const bgx = canvas.getContext("2d");
   
   canvas.width = 1200;
   canvas.height = 800;
   canvas.style.display = 'block';
   canvas.style.margin = '0 auto';
-  // canvas.style.padding = '30px';
   canvas.style.marginTop = '80px';
-  // let game = new Game(ctx);
+  canvas.style.zIndex = "1";
+  canvas.style.cursor = 'crosshair';
+
+  // background.width = 1200;
+  // background.height = 800;
+  // background.style.margin = '0 auto';
+  // background.style.marginTop = '80px';
+  // background.style.zIndex = "0";
+
   let game = new Game(ctx, canvas);
   
-  // const startGame = document.getElementById("start-game");
-
-  // startGame.addEventListener("click", () => {
-  //   playGame();
-  // });  
   function getMousePos(evt) {
     let rect = canvas.getBoundingClientRect();
     let x = (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width
@@ -48,9 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // canvas.addEventListener('mousedown', game.onClick.bind(game), false);
   canvas.addEventListener('mousedown', getMousePos, false);
-  
-  // game.drawScreen();
-  // game.drawSpear();
   
   // loop(() => {
     // game.draw();
@@ -64,5 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     playGame();
+
 
 });
