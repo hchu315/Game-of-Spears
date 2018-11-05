@@ -1,4 +1,4 @@
-# Game-of-Spears
+# Dragon Hunt / Game-of-Spears
 
 A Game of Thrones take on the classic game, Duck Hunt
 
