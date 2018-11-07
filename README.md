@@ -1,3 +1,5 @@
+[Live](https://hchu315.github.io/Dragon-Hunt-JS-project/) 
+
 # Dragon Hunt / Game-of-Spears
 
 A Game of Thrones take on the classic game, Duck Hunt
