@@ -8,7 +8,7 @@ A Game of Thrones take on the classic game, Duck Hunt
 
 Like many kids growing up in the 90's, I had the opportunity to play the classic game, Duck Hunt. It has a very addicting, yet simplistic premise. You play the role of the hunter with a cursor on the screen that represents where your weapon will hit. Periodically, flying ducks will appear and your goal is to shoot and hunt them before they fly off the screen. I thought it would be fun to implement a similar game, but with a Game of Thrones twist on it. 
 
-![game-page]()
+![game-page](https://github.com/hchu315/Dragon-Hunt-JS-project/blob/master/assets/images/Screen%20Shot%202018-11-21%20at%2011.38.15%20AM.png)
 
 The player will be assuming the role of a White Walker and throwing a White Walker's favorite projectile of choice, an ice spear. And of course, the game wouldn't complete without DRAGONS! The player will essentially be timing their finite ice spears to take one of the dragons down that are traversing across the screen before they fly off into the unknowns. The player will be in control of a circular cursor that will launch the spear at the click of the mouse. Rather than being instanteous, there will be a delay from when the spear appears on the screen and reaches its target. Timing is key.
 
