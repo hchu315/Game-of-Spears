@@ -7,6 +7,7 @@ import 'styles/index.scss';
 import Screen from './screen';
 import Game from './game';
 
+
 // function loop(fn) {
 //   requestAnimationFrame(() => loop(fn))
 //   fn()
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // background.style.marginTop = '80px';
   // background.style.zIndex = "0";
 
-  let game = new Game(ctx, canvas);
+  let game = new Game(ctx);
   
   function getMousePos(evt) {
     let rect = canvas.getBoundingClientRect();

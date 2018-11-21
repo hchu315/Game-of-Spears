@@ -4,10 +4,11 @@
   "description": "Plain webpack 4 Boilerplate with Babel, SASS and lodash on board",
   "author": "Christoph von Gellhorn",
   "license": "MIT",
-  "homepage": "https://github.com/cvgellhorn/webpack-boilerplate",
+  "homepage": "https://hchu315.github.io/Dragon-Hunt-JS-project/",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
-    "build": "webpack -p --progress --mode production --config webpack.config.build.js"
+    "build": "webpack -p --progress --mode production --config webpack.config.build.js",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.1.0",
+    "gh-pages": "^2.0.1",
     "lodash": "4.17.11"
   },
   "devDependencies": {

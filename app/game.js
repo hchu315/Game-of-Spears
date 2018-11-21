@@ -2,12 +2,11 @@ import Screen from './screen';
 import Dragon from './dragon';
 
 class Game {
-  constructor(ctx, canvas) {
+  constructor(ctx) {
     this.ctx = ctx;
-    this.canvas = canvas
+    // this.canvas = canvas
     this.screen = new Screen(ctx);
     this.dragons = [];
-    console.log(this.canvas)
   }
 
   loop(fn) {
@@ -21,10 +20,11 @@ class Game {
     for (i = 0; i < this.dragons.length; i++) {
       // console.log(dragon === this.dragons[i])
       // console.log(this.dragons.length)
-      if (dragon === this.dragons[i] && this.dragons.length < 2) {
+      if (dragon === this.dragons[i] && this.dragons.length === 2) {
         this.dragons.pop();
         
-      } else {
+      } 
+      else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
       }
     }

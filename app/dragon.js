@@ -49,7 +49,7 @@ class Dragon {
         // ctx.fillStyle = "black";
         // ctx.fill();
         // ctx.closePath();
-        img.src = "assets/images/flying_dragon-red.png";
+        img.src = "https://i.imgur.com/ZGOk4iR.png";
         // this.updateFrame();
         // if (this.dx > 0) {
           ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);

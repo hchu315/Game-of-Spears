@@ -37,7 +37,7 @@ class Screen {
         // ctx.fillStyle = "lightblue";
         // ctx.fillRect(400, 400, 100, 100);
         // canvas background-color
-        img.src = 'assets/images/pixel_mountain_by_e_pona-d8huz0z.png';
+        img.src = "https://i.imgur.com/UeOlFUN.png";
         // let grad = ctx.createLinearGradient(0, 0, 1200, 800);
         // grad.addColorStop(0, "white");
         // grad.addColorStop(1, "lightblue");
@@ -107,7 +107,7 @@ class Screen {
     killCount() {
       let ctx = this.ctx;
       let img2 = new Image();
-      img2.src = "assets/images/flying_dragon-red.png";
+      img2.src = "https://i.imgur.com/ZGOk4iR.png";
       ctx.save();
       ctx.globalAlpha = 0.4;
       ctx.drawImage(img2, 0, 0, 200, 160, 900, 700, 100, 100);
