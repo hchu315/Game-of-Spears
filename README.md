@@ -1,12 +1,14 @@
 [Live](https://hchu315.github.io/Dragon-Hunt-JS-project/) 
 
-# Dragon Hunt / Game-of-Spears
+# Dragon Hunt / Game-of-Spears (project in-progress)
 
 A Game of Thrones take on the classic game, Duck Hunt
 
 ## Background and Overview -
 
 Like many kids growing up in the 90's, I had the opportunity to play the classic game, Duck Hunt. It has a very addicting, yet simplistic premise. You play the role of the hunter with a cursor on the screen that represents where your weapon will hit. Periodically, flying ducks will appear and your goal is to shoot and hunt them before they fly off the screen. I thought it would be fun to implement a similar game, but with a Game of Thrones twist on it. 
+
+![game-page]()
 
 The player will be assuming the role of a White Walker and throwing a White Walker's favorite projectile of choice, an ice spear. And of course, the game wouldn't complete without DRAGONS! The player will essentially be timing their finite ice spears to take one of the dragons down that are traversing across the screen before they fly off into the unknowns. The player will be in control of a circular cursor that will launch the spear at the click of the mouse. Rather than being instanteous, there will be a delay from when the spear appears on the screen and reaches its target. Timing is key.
 
@@ -20,7 +22,43 @@ Players will be able to:
   1) Start a new game
   2) Throw ice spears by aiming with a cursor and clicking the mouse
   3) Restart the game
+
+Object-oriented design to achieve modular code that are independent of each other by separation of classes for game logic, game flow, and game objects:
+
+```javascript
+class Game {
+  constructor(ctx) {
+    this.ctx = ctx;
+    this.screen = new Screen(ctx);
+    this.dragons = [];
+  }
+
+  loop(fn) {
+    requestAnimationFrame(() => this.loop(fn))
+    fn()
+  }
   
+  destroyDragon(dragon) {
+    let i;
+   
+    for (i = 0; i < this.dragons.length; i++) {
+      if (dragon === this.dragons[i] && this.dragons.length === 2) {
+        this.dragons.pop();  
+      } 
+      else if (dragon === this.dragons[i]) {
+        this.dragons.splice(i, 1);
+      }
+    }
+  }
+   
+  makeDragon() {
+    let i;
+    for (i=0; i < 3; i++) {
+      this.dragons.push(new Dragon(this.ctx));
+    }     
+  }
+
+
 ## Architecture and Technologies -
  
   1) Webpack - to bundle scripts into a single source
@@ -49,3 +87,5 @@ Day 4:
 Weekend:
   a) additional styling
   b) debugging, refactor, and completing GitHub workflow/Readme
+  
+ 
