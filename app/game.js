@@ -20,9 +20,13 @@ class Game {
     for (i = 0; i < this.dragons.length; i++) {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
         this.dragons.pop();  
+        this.score++;
+        console.log(this.score);
       } 
       else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
+        this.score++;
+        console.log(this.score);
       }
     }
   }
@@ -34,11 +38,11 @@ class Game {
     }     
   }
 
-  // drawScore() {
-  //   ctx.font = "16px Arial";
-  //   ctx.fillStyle = "#0095DD";
-  //   ctx.fillText("Score: " + this.score, 8, 20);
-  // }
+  drawScore() {
+    this.ctx.font = "30px Arial";
+    this.ctx.fillStyle = "red";
+    this.ctx.fillText("Score: " + this.score, 18, 40);
+  }
   
   play() {
     this.loop(()=> {
@@ -76,6 +80,7 @@ class Game {
   render() {
     this.screen.background();
     this.screen.killCount();
+    this.drawScore();
     // this.screen.drawScore();
   }
 

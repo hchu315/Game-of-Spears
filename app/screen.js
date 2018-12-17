@@ -118,11 +118,11 @@ class Screen {
       // ctx.globalCompositeOperation = "lighter";
     }
 
-    drawScore() {
-        ctx.font = "16px Arial";
-        ctx.fillStyle = "#0095DD";
-        ctx.fillText("Score: " + this.score, 8, 20);
-    }
+    // drawScore() {
+    //     ctx.font = "16px Arial";
+    //     ctx.fillStyle = "#0095DD";
+    //     ctx.fillText("Score: " + this.score, 8, 20);
+    // }
 
     // drawDragon() {
     //   // console.log('hello');
