@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // const background = document.getElementById("background-canvas");
   // const bgx = canvas.getContext("2d");
   
-  canvas.width = 1200;
-  canvas.height = 800;
+  canvas.width = 1100;
+  canvas.height = 700;
   canvas.style.display = 'block';
   canvas.style.margin = '0 auto';
   canvas.style.marginTop = '80px';
@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const playGame = () => {
       game.makeDragon();
       game.play();
+      // game.drawScore();
     };
 
     playGame();

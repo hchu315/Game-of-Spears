@@ -4,6 +4,7 @@ import MovingObject from './moving_object';
 class Screen {
     constructor(ctx) {
         this.ctx = ctx;
+        this.score = 0;
         // this.dragon = new Dragon(ctx);
         // this.randomdir=[-2,2];
         // this.viserion = new Dragon(ctx);
@@ -115,6 +116,12 @@ class Screen {
       ctx.drawImage(img2, 0, 0, 200, 160, 1100, 700, 100, 100);
       ctx.restore();
       // ctx.globalCompositeOperation = "lighter";
+    }
+
+    drawScore() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Score: " + this.score, 8, 20);
     }
 
     // drawDragon() {

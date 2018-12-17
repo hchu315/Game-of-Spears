@@ -4,9 +4,9 @@ import Dragon from './dragon';
 class Game {
   constructor(ctx) {
     this.ctx = ctx;
-    // this.canvas = canvas
     this.screen = new Screen(ctx);
     this.dragons = [];
+    this.score = 0;
   }
 
   loop(fn) {
@@ -18,11 +18,8 @@ class Game {
     let i;
    
     for (i = 0; i < this.dragons.length; i++) {
-      // console.log(dragon === this.dragons[i])
-      // console.log(this.dragons.length)
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
-        this.dragons.pop();
-        
+        this.dragons.pop();  
       } 
       else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
@@ -36,10 +33,16 @@ class Game {
       this.dragons.push(new Dragon(this.ctx));
     }     
   }
+
+  // drawScore() {
+  //   ctx.font = "16px Arial";
+  //   ctx.fillStyle = "#0095DD";
+  //   ctx.fillText("Score: " + this.score, 8, 20);
+  // }
   
   play() {
     this.loop(()=> {
-      this.ctx.clearRect(0, 0, 1200, 800);
+      this.ctx.clearRect(0, 0, 1100, 700);
       this.render();
       this.dragons.forEach(dragon => {
         dragon.render();
@@ -58,20 +61,13 @@ class Game {
     let cx;
     let cy;
     let dist;
-    // console.log(cx, cy, this.x, this.y);
-    // console.log(this.dragons)
     this.dragons.forEach( dragon => {
       cx = (x - dragon.x - 50)
       cy = (y - dragon.y - 50)
 
       dist = Math.sqrt((cx * cx) + (cy * cy)) 
       
-      // console.log('x:'+x, dragon.x)
-      // console.log("y:"+y, dragon.y)
-      // console.log(x, dragon.x)
-      // console.log(cx, dragon.x)
       if (dist < 50) {
-        // alert(+cx+','+cy);
         this.destroyDragon(dragon);
       }
     })      
@@ -80,6 +76,7 @@ class Game {
   render() {
     this.screen.background();
     this.screen.killCount();
+    // this.screen.drawScore();
   }
 
   // drawSpear() {
