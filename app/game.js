@@ -29,7 +29,7 @@ class Game {
    
   makeDragon() {
     let i;
-    for (i=0; i < 3; i++) {
+    for (i=0; i < 6; i++) {
       this.dragons.push(new Dragon(this.ctx));
     }     
   }
