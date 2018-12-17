@@ -20,13 +20,11 @@ class Game {
     for (i = 0; i < this.dragons.length; i++) {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
         this.dragons.pop();  
-        this.score++;
-        console.log(this.score);
+        this.score+=10;
       } 
       else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
-        this.score++;
-        console.log(this.score);
+        this.score+=10;
       }
     }
   }
