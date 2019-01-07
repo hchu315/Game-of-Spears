@@ -7,6 +7,7 @@ class Game {
     this.screen = new Screen(ctx);
     this.dragons = [];
     this.score = 0;
+    this.replayGame = document.getElementById("start-menu");
   }
 
   loop(fn) {
@@ -27,6 +28,8 @@ class Game {
         this.score+=10;
       }
     }
+
+    this.replay();
   }
    
   makeDragon() {
@@ -42,6 +45,12 @@ class Game {
     this.ctx.fillText("Score: " + this.score, 18, 40);
   }
   
+  replay(){
+    if (this.dragons.length === 0) {
+      this.replayGame.removeAttribute("style")
+    }
+  }
+
   play() {
     this.loop(()=> {
       this.ctx.clearRect(0, 0, 1100, 700);

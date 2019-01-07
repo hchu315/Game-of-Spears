@@ -26,9 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
   // const background = document.getElementById("background-canvas");
   // const bgx = canvas.getContext("2d");
+
+  const startGame = document.getElementById("start-game");
+  const startMenu = document.getElementById("start-menu");
   
-  canvas.width = 1100;
-  canvas.height = 700;
+  canvas.width = 1200;
+  canvas.height = 800;
   canvas.style.display = 'block';
   canvas.style.margin = '0 auto';
   canvas.style.marginTop = '80px';
@@ -66,7 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // game.drawScore();
     };
 
-    playGame();
+    // playGame();
 
+  startGame.addEventListener("click", () => {
+    // scoreboardContainer.className = "scoreboard-container";
+    startMenu.setAttribute("style", "visibility: hidden;");
+    playGame();
+  });
 
 });

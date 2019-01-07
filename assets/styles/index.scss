@@ -13,11 +13,11 @@ html {
 // }
 
 .game-title {
-    color: green;
-    font-family: cursive;
-    font-size: 600;
-    display: flex;
-    justify-content: center;
+    // color: green;
+    // font-family: cursive;
+    // font-size: 600;
+    // display: flex;
+    // justify-content: center;
     // align-items: center;
     // align-self: center;
     // align-content: center;
@@ -47,3 +47,39 @@ html {
     // justify-content; center;
 }
 
+
+.start-menu {
+//   align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    background-color: palegreen;
+  border: 5px solid rgb(200, 200, 200);
+  border-radius: 14px;
+  display: flex;
+  left: 35%;
+  top: 30%; 
+//   align-self: center;
+  flex-direction: column;
+  height: 400px;
+  position: absolute;
+  width: 30%;
+  z-index: 3;
+}
+
+.start-menu h2 {
+    font-style: italic;
+    font-size: 30px;
+}
+
+.start-menu h3 {
+    font-style: italic;
+    font-size: 20px;
+}
+
+.start-menu p {
+    // font-size: 30px;
+    // align-self: center;
+    // align-content: center;
+    text-align: center;
+
+}
