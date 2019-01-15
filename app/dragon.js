@@ -8,7 +8,7 @@ class Dragon {
         this.y = 0;
         this.dx = 2;
         this.dy = 2;
-        this.randomdir;
+        // this.randomdir;
         setInterval(() => {
             this.dx = this.randomdir[Math.round(Math.random())];
             this.dy = this.randomdir[Math.round(Math.random())];
@@ -19,6 +19,9 @@ class Dragon {
         this.numberOfFrames = 3;
         this.tickCount = 0;
         this.ticksPerFrame = 20;
+
+        this.explodeIndex = 1;
+        this.explodeFrames = 10;
     }
 
     updateFrame() {
@@ -38,6 +41,35 @@ class Dragon {
           this.frameIndex = 0;
         }
       }
+
+      // update explosion frames
+
+    }
+
+    explodeDragon() {
+      const ctx = this.ctx;
+      let img = new Image();
+      img.src = "https://i.imgur.com/lqEkVlw.png";
+      
+      for (let i = 0; i < 10; i++) {
+        ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, 200, 200, this.explodeIndex * (1000 / this.explodeFrames), 100);
+        this.explodeIndex++
+        console.log(this.explodeIndex)
+      // ctx.drawImage(img, 100, 100, 100, 100, 400, 400, 100, 100);
+      }
+      // return;
+      // break;
+      // this.explodeIndex = 1;
+    }
+
+    fallingDragon() {
+      const ctx = this.ctx;
+      let img = new Image();
+      img.src = "https://i.imgur.com/ZGOk4iR.png";
+
+      // ctx.drawImage(img, 0, 0, 120, 120, 200, 200, 100, 100);
+
+      // ctx.drawImage(img, )
     }
 
     draw() {
@@ -51,13 +83,15 @@ class Dragon {
         // ctx.closePath();
         img.src = "https://i.imgur.com/ZGOk4iR.png";
         // this.updateFrame();
-        // if (this.dx > 0) {
+        if (this.dx > 0) {
           ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
-        // } else {
+
+          // number of frames refer to frames on the row being utilized on sprite sheet
+        } else {
           // ctx.scale(-1, 1);
-          // ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+          ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 470, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
           // ctx.setTransform(1, 0, 0, 1, 0, 0);
-        // }
+        }
         // ctx.drawImage(img, 0, 150, 200, 200, 0, 0, 150, 150);
         if (this.y + this.dy > 600) {
           this.dy = -this.dy;
@@ -65,6 +99,8 @@ class Dragon {
         // else if (this.y + this.dy < 0 || this.x + this.dx < 0 || this.x > window.innerWidth - this.ballRadius) {
 
         // }
+
+        
         this.x += this.dx;
         this.y += this.dy;
     }
@@ -72,6 +108,8 @@ class Dragon {
     render() {
         this.updateFrame();
         this.draw();
+        this.explodeDragon();
+        this.fallingDragon();
     }
 }
 

@@ -5,6 +5,7 @@ class Game {
   constructor(ctx) {
     this.ctx = ctx;
     this.screen = new Screen(ctx);
+    this.dragon = new Dragon(ctx);
     this.dragons = [];
     this.score = 0;
     this.replayGame = document.getElementById("start-menu");
@@ -22,10 +23,12 @@ class Game {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
         this.dragons.pop();  
         this.score+=10;
+        this.dragon.explodeDragon();
       } 
       else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
         this.score+=10;
+        this.dragon.explodeDragon();
       }
     }
 
@@ -45,15 +48,15 @@ class Game {
     this.ctx.fillText("Score: " + this.score, 18, 40);
   }
   
-  replay(){
-    if (this.dragons.length === 0) {
-      this.replayGame.removeAttribute("style")
-    }
-  }
+  // replay(){
+  //   if (this.dragons.length === 0) {
+  //     this.replayGame.removeAttribute("style")
+  //   }
+  // }
 
   play() {
     this.loop(()=> {
-      this.ctx.clearRect(0, 0, 1100, 700);
+      this.ctx.clearRect(0, 0, 1200, 800);
       this.render();
       this.dragons.forEach(dragon => {
         dragon.render();

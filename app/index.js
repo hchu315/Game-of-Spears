@@ -69,12 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
       // game.drawScore();
     };
 
-    // playGame();
-
-  startGame.addEventListener("click", () => {
-    // scoreboardContainer.className = "scoreboard-container";
-    startMenu.setAttribute("style", "visibility: hidden;");
     playGame();
-  });
+
+    // UNCOMMENT THIS FOR STARTMENU
+  // startGame.addEventListener("click", () => {
+  //   // scoreboardContainer.className = "scoreboard-container";
+  //   startMenu.setAttribute("style", "visibility: hidden;");
+  //   playGame();
+  // });
 
 });
