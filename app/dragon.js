@@ -20,7 +20,7 @@ class Dragon {
         this.tickCount = 0;
         this.ticksPerFrame = 20;
 
-        this.explodeIndex = 1;
+        this.explodeIndex = 3;
         this.explodeFrames = 10;
     }
 
@@ -46,20 +46,37 @@ class Dragon {
 
     }
 
-    explodeDragon() {
+    explodeDragon(x, y) {
+      // if (x === undefined) return;
       const ctx = this.ctx;
       let img = new Image();
-      img.src = "https://i.imgur.com/lqEkVlw.png";
       
-      for (let i = 0; i < 10; i++) {
-        ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, 200, 200, this.explodeIndex * (1000 / this.explodeFrames), 100);
-        this.explodeIndex++
-        console.log(this.explodeIndex)
+      // for (let i = 0; i < 9; i++) {
+      // img.onload = function() {
+      // };
+      img.addEventListener("load", 
+        ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, x, y, this.explodeIndex * (1000 / this.explodeFrames), 100)
+      );
+
+      // this.explodeIndex++
+      img.src = "https://i.imgur.com/lqEkVlw.png";
+
+        console.log(x, y)
+      // img.onload();  
       // ctx.drawImage(img, 100, 100, 100, 100, 400, 400, 100, 100);
-      }
+      // }
       // return;
       // break;
       // this.explodeIndex = 1;
+    }
+
+    testDragon() {
+      const ctx = this.ctx;
+      let img = new Image();
+
+      img.src = "https://i.imgur.com/lqEkVlw.png";
+
+      ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, 300, 300, this.explodeIndex * (1000 / this.explodeFrames), 100)
     }
 
     fallingDragon() {
@@ -108,8 +125,9 @@ class Dragon {
     render() {
         this.updateFrame();
         this.draw();
-        this.explodeDragon();
-        this.fallingDragon();
+        // this.explodeDragon();
+        this.testDragon();
+        // this.fallingDragon();
     }
 }
 

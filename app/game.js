@@ -23,16 +23,16 @@ class Game {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
         this.dragons.pop();  
         this.score+=10;
-        this.dragon.explodeDragon();
+        this.dragon.explodeDragon(dragon.x, dragon.y);
       } 
       else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
         this.score+=10;
-        this.dragon.explodeDragon();
+        this.dragon.explodeDragon(dragon.x, dragon.y);
       }
     }
 
-    this.replay();
+    // this.replay();
   }
    
   makeDragon() {
@@ -72,6 +72,7 @@ class Game {
   }
 
   onClick(x, y) {
+    // console.log(`first click: ${x}, ${y}`)
     let cx;
     let cy;
     let dist;
@@ -83,6 +84,7 @@ class Game {
       
       if (dist < 50) {
         this.destroyDragon(dragon);
+        // console.log(dragon)
       }
     })      
   }
