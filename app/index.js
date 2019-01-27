@@ -7,25 +7,9 @@ import 'styles/index.scss';
 import Screen from './screen';
 import Game from './game';
 
-
-// function loop(fn) {
-//   requestAnimationFrame(() => loop(fn))
-//   fn()
-// }
-
-// function onClick(event) {
-//   let cx = event.pageX;
-//   let cy = event.pageY;
-//   alert("X,Y=" + cx + "," + cy);
-//   screen.mouseX = event.pageX;
-//   screen.mouseY = event.pageY;
-// }
-
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const ctx = canvas.getContext("2d");
-  // const background = document.getElementById("background-canvas");
-  // const bgx = canvas.getContext("2d");
 
   const startGame = document.getElementById("start-game");
   const startMenu = document.getElementById("start-menu");
@@ -38,12 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.style.zIndex = "1";
   canvas.style.cursor = 'crosshair';
 
-  // background.width = 1200;
-  // background.height = 800;
-  // background.style.margin = '0 auto';
-  // background.style.marginTop = '80px';
-  // background.style.zIndex = "0";
-
   let game = new Game(ctx);
   
   function getMousePos(evt) {
@@ -54,28 +32,21 @@ document.addEventListener("DOMContentLoaded", () => {
     game.onClick(x, y);
   }
   
-  // canvas.addEventListener('mousedown', game.onClick.bind(game), false);
   canvas.addEventListener('mousedown', getMousePos, false);
   
-  // loop(() => {
-    // game.draw();
-    // game.makeDragon();
-    // game.render();
-    // });
-    
-    const playGame = () => {
-      game.makeDragon();
-      game.play();
-      // game.drawScore();
-    };
+  const playGame = () => {
+    game.makeDragon();
+    game.play();
+    // game.drawScore();
+  };
 
-    playGame();
+    // playGame();
 
     // UNCOMMENT THIS FOR STARTMENU
-  // startGame.addEventListener("click", () => {
-  //   // scoreboardContainer.className = "scoreboard-container";
-  //   startMenu.setAttribute("style", "visibility: hidden;");
-  //   playGame();
-  // });
+  startGame.addEventListener("click", () => {
+    // scoreboardContainer.className = "scoreboard-container";
+    startMenu.setAttribute("style", "visibility: hidden;");
+    playGame();
+  });
 
 });

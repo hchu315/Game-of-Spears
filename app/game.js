@@ -23,16 +23,15 @@ class Game {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
         this.dragons.pop();  
         this.score+=10;
-        this.dragon.explodeDragon(dragon.x, dragon.y);
+        // this.dragon.explodeDragon(dragon.x, dragon.y);
       } 
       else if (dragon === this.dragons[i]) {
         this.dragons.splice(i, 1);
         this.score+=10;
-        this.dragon.explodeDragon(dragon.x, dragon.y);
+        // this.dragon.explodeDragon(dragon.x, dragon.y);
       }
     }
 
-    // this.replay();
   }
    
   makeDragon() {
@@ -47,12 +46,6 @@ class Game {
     this.ctx.fillStyle = "red";
     this.ctx.fillText("Score: " + this.score, 18, 40);
   }
-  
-  // replay(){
-  //   if (this.dragons.length === 0) {
-  //     this.replayGame.removeAttribute("style")
-  //   }
-  // }
 
   play() {
     this.loop(()=> {
@@ -60,19 +53,11 @@ class Game {
       this.render();
       this.dragons.forEach(dragon => {
         dragon.render();
-        // this.render();
       })
     });
-
-    // setInterval(() => { 
-    //   if (this.dragons.length > 0) {
-    //     this.dragons.pop();
-    //   }
-    // }, 5000)
   }
 
   onClick(x, y) {
-    // console.log(`first click: ${x}, ${y}`)
     let cx;
     let cy;
     let dist;
@@ -84,7 +69,6 @@ class Game {
       
       if (dist < 50) {
         this.destroyDragon(dragon);
-        // console.log(dragon)
       }
     })      
   }
@@ -93,12 +77,7 @@ class Game {
     this.screen.background();
     this.screen.killCount();
     this.drawScore();
-    // this.screen.drawScore();
   }
-
-  // drawSpear() {
-  //   this.screen.drawWeapon();
-  // }
 }
 
 export default Game;

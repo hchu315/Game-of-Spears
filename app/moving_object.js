@@ -21,7 +21,6 @@ class MovingObject {
   // }
 
   drawSpear() {
-    // debugger;
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(300, 150);
