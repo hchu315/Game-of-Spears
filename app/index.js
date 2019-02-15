@@ -37,9 +37,19 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // console.log(loadingText)
   function loadText(e) {
+    // console.log(startMenu)
     if (e.propertyName.includes('color')) {
-      // console.log(e)
-      loadingText.innerHTML = "Developed by: Henry Chu"
+      setTimeout(function() {
+        // loadingText.innerHTML = "";
+        loadingText.innerHTML = "Developed by: Henry Chu";
+        
+        if (loadingText.innerHTML === "Developed by: Henry Chu") {
+          setTimeout(() => {
+            loadingText.innerHTML = '';
+            setTimeout(() => startMenu.setAttribute("style", "visibility: visible;"), 900);
+          }, 1200);
+        }
+      }, 1200);   
     }
   }
 

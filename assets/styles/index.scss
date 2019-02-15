@@ -25,6 +25,7 @@ body {
     font-size: 70px;
     font-weight: 500;
     text-align: center;
+    font-stretch: ultra-expanded;
     // color: white;
 }
 
@@ -71,18 +72,20 @@ body {
 .start-menu {
     justify-content: center;
     align-items: center;
-    background-color: palegreen;
-  border: 5px solid rgb(200, 200, 200);
-  border-radius: 14px;
-  display: flex;
-  left: 35%;
-  top: 30%; 
-//   align-self: center;
-  flex-direction: column;
-  height: 400px;
-  position: absolute;
-  width: 30%;
-  z-index: 3;
+    // background-color: palegreen;
+    border: 5px solid rgb(200, 200, 200);
+    border-radius: 14px;
+    display: flex;
+    left: 35%;
+    top: 35%; 
+    flex-direction: column;
+    height: 400px;
+    position: absolute;
+    width: 30%;
+    z-index: 3;
+    visibility: hidden;
+    color: white;
+    text-align: center;
 }
 
 .start-menu > * {
@@ -95,6 +98,14 @@ body {
     color: white;
     font-size: 28px;
     transition: 1.75s ease-out;
+}
+
+.start-menu h2 {
+    font-size: 34px;
+}
+
+.start-menu h3 {
+    font-size: 26px;
 }
 
 .start-menu p {
