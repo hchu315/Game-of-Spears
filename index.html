@@ -6,16 +6,23 @@
     <title>Dragon Hunt 2018</title>
 </head>
 <body>
-    <div id="start-menu-container">
-        <div id="start-menu" class="start-menu">
-            <h3>Welcome to</h3>
-            <h2>Dragon Hunt</h2>
-            <p id="instructions"></p>
-            <p>Instructions: Aim with your cursor and click to shoot the dragons! Each dragon is worth 10 points!</p>
-            <button id='start-game'>Start game</button>
+    <div id="canvas container">
+        <h1 class="game-title">Dragon Hunt</h1>
+        <div id="loading-screen-container">
+            <span class="loading-text">No dragons were harmed in the production of this game.</span>  
+                <!-- <span class="loading-text">Developed by: Henry Chu</span>   -->
+                <div id="start-menu-container">
+                    <div id="start-menu" class="start-menu">
+                        <h3>Welcome to</h3>
+                        <h2>Dragon Hunt</h2>
+                        <p id="instructions"></p>
+                        <p>Instructions: Aim with your cursor and click to shoot the dragons! Each dragon is worth 10 points!</p>
+                        <button id='start-game'>Start game</button>
+                    </div>
+                </div>
+                
+                <canvas id="game-canvas"></canvas>
         </div>
     </div>
-        
-    <canvas id="game-canvas"></canvas>
-<script type="text/javascript" src="vendor.39d6e6cd03ebef412bf2.js"></script><script type="text/javascript" src="bundle.f7379a753d38cd5dd7bd.js"></script></body>
+<script type="text/javascript" src="vendor.39d6e6cd03ebef412bf2.js"></script><script type="text/javascript" src="bundle.86e93ce6458903b6172b.js"></script></body>
 </html>
