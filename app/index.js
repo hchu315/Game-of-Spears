@@ -15,12 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const startGame = document.getElementById("start-game");
   const startMenu = document.getElementById("start-menu");
   
-  canvas.width = 1200;
-  canvas.height = 800;
-  canvas.style.display = 'block';
-  // canvas.style.margin = '0 auto';
-  // canvas.style.marginTop = '80px';
-  // canvas.style.zIndex = "1";
+  canvas.width = 1100;
+  canvas.height = 700;
+  canvas.style.zIndex = "1";
 
   let game = new Game(ctx);
   
@@ -32,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     game.onClick(x, y);
   }
   
-  // canvas.addEventListener('mousedown', getMousePos, false);
+  canvas.addEventListener('mousedown', getMousePos, false);
   loadingText.addEventListener('transitionend', loadText);
   
   // console.log(loadingText)

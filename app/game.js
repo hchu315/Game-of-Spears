@@ -75,8 +75,9 @@ class Game {
 
   render() {
     this.screen.background();
-    this.screen.killCount();
+    // this.screen.killCount();
     this.drawScore();
+    // this.screen.timer();
   }
 }
 
