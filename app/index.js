@@ -32,12 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.addEventListener('mousedown', getMousePos, false);
   loadingText.addEventListener('transitionend', loadText);
   
-  // console.log(loadingText)
   function loadText(e) {
-    // console.log(startMenu)
     if (e.propertyName.includes('color')) {
       setTimeout(function() {
-        // loadingText.innerHTML = "";
         loadingText.innerHTML = "Developed by: Henry Chu";
         
         if (loadingText.innerHTML === "Developed by: Henry Chu") {
@@ -50,8 +47,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function gameTimer() {
+    const timer = document.querySelector('.timer');
+    let defaultTime = 30;
+
+    let test = setInterval(function () {
+      // console.log(timer)
+      timer.innerHTML = `Timer: ${defaultTime}`;
+      defaultTime--;
+      if (defaultTime < 0) {
+        clearInterval(test);
+      }
+    }.bind(this), 1000);
+
+    // timingFxn();  
+    // if (this.defaultTime === 0) {
+    //   clearInterval()
+    // }
+
+    // ctx.font = "30px Arial";
+    // ctx.fillStyle = "red";
+    // ctx.fillText('Timer: ' + this.defaultTime, 60, 60)
+  }
+
   const playGame = () => {
     game.makeDragon();
+    gameTimer();
     game.play();
     // game.drawScore();
   };

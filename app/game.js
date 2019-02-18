@@ -32,6 +32,7 @@ class Game {
       }
     }
 
+    this.gameOver(this.dragons);
   }
    
   makeDragon() {
@@ -73,11 +74,15 @@ class Game {
     })      
   }
 
+  gameOver() {
+    return this.dragons.length ? console.log('real shill') : console.log('GG');
+  }
+
   render() {
     this.screen.background();
     // this.screen.killCount();
     this.drawScore();
-    // this.screen.timer();
+    // this.screen.gameTimer();
   }
 }
 

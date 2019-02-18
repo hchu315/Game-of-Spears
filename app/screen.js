@@ -6,7 +6,6 @@ class Screen {
         this.ctx = ctx;
         this.score = 0;
         this.defaultTime = 30;
-        this.timer = document.querySelector('.timer');
       }
       
     
@@ -31,18 +30,31 @@ class Screen {
     //   ctx.restore();
     // }
 
-    timer() {
+    gameTimer() {
       const ctx = this.ctx;
+      const timer = document.querySelector('.timer');
+      // console.log(this.defaultTime)
+      // const that = this;
 
-      setInterval(() => {
+      setInterval(function() {
+        // console.log(timer)
+        timer.innerHTML = `${this.defaultTime}`;
         this.defaultTime--;
-      }, 1000);
+        if (this.defaultTime <= 0) {
+          clearInterval(this.gameTimer);
+        }
+        }.bind(this), 1000);
 
-      this.timer.innerHTML = this.defaultTime;
+      // timingFxn();  
+      // if (this.defaultTime === 0) {
+      //   clearInterval()
+      // }
+
       // ctx.font = "30px Arial";
       // ctx.fillStyle = "red";
       // ctx.fillText('Timer: ' + this.defaultTime, 60, 60)
     }
+
 }
 
 export default Screen;

@@ -121,16 +121,31 @@ body {
 }
 
 .game-navbar {
-    width: 100%;
+    display: flex;
+    width: 1120px;
     height: 90px;
     // flex: 1;
-    display: block;
+    // display: block;
     position: absolute;
     bottom: 0;
+    color: white;
 }
 
-timer {
+.ammo-indicator {
+    flex: 1 1 auto;
+}
+
+.timer {
+    // position: absolute;
     color: white;
-    width: 33%;
-    height: 90px;
+    // width: 33%;
+    // height: 90px;
+    flex: 1 1 auto;
+    font-size: 30px;
+    text-align: center;
+    line-height: 3;
+}
+
+.reload {
+    flex: 1 1 auto;
 }
