@@ -30,30 +30,11 @@ class Screen {
     //   ctx.restore();
     // }
 
-    gameTimer() {
-      const ctx = this.ctx;
-      const timer = document.querySelector('.timer');
-      // console.log(this.defaultTime)
-      // const that = this;
-
-      setInterval(function() {
-        // console.log(timer)
-        timer.innerHTML = `${this.defaultTime}`;
-        this.defaultTime--;
-        if (this.defaultTime <= 0) {
-          clearInterval(this.gameTimer);
-        }
-        }.bind(this), 1000);
-
-      // timingFxn();  
-      // if (this.defaultTime === 0) {
-      //   clearInterval()
-      // }
-
-      // ctx.font = "30px Arial";
-      // ctx.fillStyle = "red";
-      // ctx.fillText('Timer: ' + this.defaultTime, 60, 60)
+    instructionalPage() {
+      const instructions = document.querySelector('.instructions')
     }
+
+
 
 }
 

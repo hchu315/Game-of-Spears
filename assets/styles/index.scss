@@ -129,23 +129,35 @@ body {
     position: absolute;
     bottom: 0;
     color: white;
+    text-align: center;
+    font-size: 30px;
+    line-height: 3;
+
 }
 
 .ammo-indicator {
-    flex: 1 1 auto;
+    flex: 1 0 auto;
+    color: red;
+    text-shadow: 0 0 10p #fff;
+
 }
 
 .timer {
     // position: absolute;
-    color: white;
+    // color: white;
     // width: 33%;
     // height: 90px;
-    flex: 1 1 auto;
-    font-size: 30px;
-    text-align: center;
-    line-height: 3;
+    flex: 1 0 auto;
+    // font-size: 30px;
+    // text-align: center;
+    // line-height: 3;
 }
 
-.reload {
-    flex: 1 1 auto;
+.game-title {
+    flex: 1 0 auto;
+    font-family: cursive;
 }
+
+// .reload {
+//     flex: 1 1 auto;
+// }

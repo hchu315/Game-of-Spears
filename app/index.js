@@ -6,6 +6,7 @@
 import 'styles/index.scss';
 import Screen from './screen';
 import Game from './game';
+// import Ammo from './ammo';
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
@@ -19,7 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.height = 700;
   canvas.style.zIndex = "1";
 
-  let game = new Game(ctx);
+  const game = new Game(ctx);
+  // const ammo = new Ammo(ctx);
+  // console.log(game.ammo.createAmmo)
   
   function getMousePos(evt) {
     let rect = canvas.getBoundingClientRect();
@@ -30,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   canvas.addEventListener('mousedown', getMousePos, false);
+  canvas.addEventListener('keydown', game.reloadTheClip.bind(game), true);
   loadingText.addEventListener('transitionend', loadText);
   
   function loadText(e) {
@@ -72,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const playGame = () => {
     game.makeDragon();
+    game.loadTheClip();
     gameTimer();
     game.play();
     // game.drawScore();

@@ -40,20 +40,20 @@ class Dragon {
       // update explosion frames
     }
 
-    explodeDragon(x, y) {
-      // if (x === undefined) return;
-      const ctx = this.ctx;
-      let img = new Image();
+    // explodeDragon(x, y) {
+    //   if (x === undefined) return;
+    //   const ctx = this.ctx;
+    //   let img = new Image();
       
       // for (let i = 0; i < 9; i++) {
       // img.onload = function() {
       // };
-      img.addEventListener("load", 
-        ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, x, y, this.explodeIndex * (1000 / this.explodeFrames), 100)
-      );
+      // img.addEventListener("load", 
+      //   ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, x, y, this.explodeIndex * (1000 / this.explodeFrames), 100)
+      // );
 
       // this.explodeIndex++
-      img.src = "https://i.imgur.com/lqEkVlw.png";
+      // img.src = "https://i.imgur.com/lqEkVlw.png";
 
       // img.onload();  
       // ctx.drawImage(img, 100, 100, 100, 100, 400, 400, 100, 100);
@@ -61,26 +61,26 @@ class Dragon {
       // return;
       // break;
       // this.explodeIndex = 1;
-    }
+    // }
 
-    testDragon() {
-      const ctx = this.ctx;
-      let img = new Image();
+    // testDragon() {
+    //   const ctx = this.ctx;
+    //   let img = new Image();
 
-      img.src = "https://i.imgur.com/lqEkVlw.png";
+    //   img.src = "https://i.imgur.com/lqEkVlw.png";
 
-      ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, 300, 300, this.explodeIndex * (1000 / this.explodeFrames), 100)
-    }
+    //   ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, 300, 300, this.explodeIndex * (1000 / this.explodeFrames), 100)
+    // }
 
-    fallingDragon() {
-      const ctx = this.ctx;
-      let img = new Image();
-      img.src = "https://i.imgur.com/ZGOk4iR.png";
+    // fallingDragon() {
+    //   const ctx = this.ctx;
+    //   let img = new Image();
+    //   img.src = "https://i.imgur.com/ZGOk4iR.png";
 
-      // ctx.drawImage(img, 0, 0, 120, 120, 200, 200, 100, 100);
+    //   ctx.drawImage(img, 0, 0, 120, 120, 200, 200, 100, 100);
 
-      // ctx.drawImage(img, )
-    }
+    //   ctx.drawImage(img, )
+    // }
 
     draw() {
         const ctx = this.ctx;

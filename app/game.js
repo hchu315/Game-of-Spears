@@ -1,12 +1,15 @@
 import Screen from './screen';
 import Dragon from './dragon';
+import Ammo from './ammo';
 
 class Game {
   constructor(ctx) {
     this.ctx = ctx;
     this.screen = new Screen(ctx);
     this.dragon = new Dragon(ctx);
+    // this.ammo = new Ammo(ctx);
     this.dragons = [];
+    this.clip = [];
     this.score = 0;
     this.replayGame = document.getElementById("start-menu");
   }
@@ -42,6 +45,10 @@ class Game {
     }     
   }
 
+  // loadAmmo() {
+  //   for
+  // }
+
   drawScore() {
     this.ctx.font = "30px Arial";
     this.ctx.fillStyle = "red";
@@ -55,7 +62,33 @@ class Game {
       this.dragons.forEach(dragon => {
         dragon.render();
       })
+      this.clip.forEach(missile => missile.render());
     });
+  }
+
+  loadTheClip() {
+    for (let index = 0; index < 3; index++) {
+      this.clip.push(new Ammo(this.ctx, index));
+    }
+  }
+  
+  reloadTheClip(e) {
+    // console.log(e)
+    if (e.keyCode !== 82 || this.clip.length !== 0) return;
+
+    // console.log('vibing')
+    console.log(this)
+    for (let index = 0; index < 3; index++) {
+      this.clip.push(new Ammo(this.ctx, index));
+    }
+  
+  }
+
+  depleteAmmo() {
+    // console.log(this.clip)
+    // console.log('werk werk')
+    if (this.clip.length === 0) alert('Reload!');
+      this.clip.pop();
   }
 
   onClick(x, y) {
@@ -68,10 +101,24 @@ class Game {
 
       dist = Math.sqrt((cx * cx) + (cy * cy)) 
       
-      if (dist < 50) {
+      if (dist < 50 && this.clip.length > 0) {
         this.destroyDragon(dragon);
       }
-    })      
+    })
+    
+    // console.log(this.ammo)
+    if (this.clip.length > 0) {
+      this.depleteAmmo();
+    } else {
+      // alert('Reload Mofo!')
+      this.hotTips('Reload!!!')
+    }
+  }
+
+  hotTips(text) {
+    const indicator = document.querySelector('.ammo-indicator');
+
+    indicator.innerHTML = `${text}`;
   }
 
   gameOver() {
@@ -82,7 +129,9 @@ class Game {
     this.screen.background();
     // this.screen.killCount();
     this.drawScore();
+    // this.loadTheClip();
     // this.screen.gameTimer();
+    // this.ammo.render();
   }
 }
 
