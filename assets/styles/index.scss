@@ -112,11 +112,7 @@ body {
     font-size: 26px;
 }
 
-.start-menu p {
-    // font-size: 30px;
-    // align-self: center;
-    // align-content: center;
-    // text-align: center;
+.end-menu {
 
 }
 
@@ -135,8 +131,12 @@ body {
 
 }
 
-.ammo-indicator {
+.game-navbar-sections {
     flex: 1 0 auto;
+}
+
+.ammo-indicator {
+    // flex: 1 0 auto;
     color: red;
     text-shadow: 0 0 10p #fff;
 
@@ -147,14 +147,14 @@ body {
     // color: white;
     // width: 33%;
     // height: 90px;
-    flex: 1 0 auto;
+    // flex: 1 0 auto;
     // font-size: 30px;
     // text-align: center;
     // line-height: 3;
 }
 
-.game-title {
-    flex: 1 0 auto;
+.dragon-counter-container {
+    // flex: 1 0 auto;
     font-family: cursive;
 }
 

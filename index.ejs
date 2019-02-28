@@ -16,7 +16,7 @@
                         <h3>Welcome to</h3>
                         <h1>Dragon Hunt</h1>
                         <p class="instructions">
-                            Instructions: Aim with your cursor and click to shoot the dragons! Each dragon is worth 10 points!
+                            Instructions: Aim with your cursor and click to shoot the dragons! Defeat all the dragons before time runs out!
                             (Maximize screen for best view.)
                         </p>
                         <button id='start-game'>Start game</button>
@@ -25,10 +25,24 @@
                 
                 <canvas tabIndex="1" id="game-canvas"></canvas>
                 <div class="game-navbar">
-                    <div class="ammo-indicator">
+                    <div class="game-navbar-sections">
+                        <div class="ammo-indicator">
+                        </div>
                     </div>
-                    <span class="timer"></span>
-                    <span class="game-title">Dragon Hunt</span>
+                    <div class="game-navbar-sections">
+                        <span class="timer"></span>
+                    </div>
+                    <div class="game-navbar-sections">
+                        <div class="dragon-counter-container">
+                            <span class="dragon-counter"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="end-menu-container">
+                    <div id="end-menu">
+
+                    </div>
                 </div>
         </div>
     </div>

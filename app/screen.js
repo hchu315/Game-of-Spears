@@ -4,7 +4,7 @@ import MovingObject from './moving_object';
 class Screen {
     constructor(ctx) {
         this.ctx = ctx;
-        this.score = 0;
+        // this.score = 0;
         this.defaultTime = 30;
       }
       
@@ -30,8 +30,15 @@ class Screen {
     //   ctx.restore();
     // }
 
-    instructionalPage() {
-      const instructions = document.querySelector('.instructions')
+    // instructionalPage() {
+    //   const instructions = document.querySelector('.instructions')
+    // }
+
+    drawMissiles() {
+      const ammoIndicator = document.querySelector('.ammo-indicator');
+
+       
+      ammoIndicator.appendChild()
     }
 
 

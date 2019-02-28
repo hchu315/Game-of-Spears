@@ -55,12 +55,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const timer = document.querySelector('.timer');
     let defaultTime = 30;
 
+    timer.innerHTML = `Timer: ${defaultTime}`;
+
     let test = setInterval(function () {
       // console.log(timer)
       timer.innerHTML = `Timer: ${defaultTime}`;
       defaultTime--;
       if (defaultTime < 0) {
         clearInterval(test);
+        game.lose();
       }
     }.bind(this), 1000);
 
@@ -76,9 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const playGame = () => {
     game.makeDragon();
-    game.loadTheClip();
-    gameTimer();
+    // game.loadTheClip();
     game.play();
+    gameTimer();
+    game.dragonsRemaining(game.dragons);
+    // console.log(game.clip)
+    game.clip.forEach(missile => missile.createAmmo())
     // game.drawScore();
   };
 
