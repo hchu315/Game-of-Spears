@@ -125,7 +125,7 @@ class Game {
     if (this.clip.length > 0) {
       this.depleteAmmo();
     } else {
-      alert('Reload Mofo!')
+      alert('Press R to Reload!')
       // this.hotTips('Reload!!!')
     }
   }
@@ -142,10 +142,16 @@ class Game {
 
   win() {
     console.log('werk?')
+    const endMenu = document.querySelector('#end-menu');
+
+    endMenu.setAttribute("style", "visibility: visible;");
   }
 
   lose() {
     console.log('woop woop')
+    const endMenu = document.querySelector('#end-menu');
+
+    endMenu.setAttribute("style", "visibility: visible;");
   }
 
   render() {

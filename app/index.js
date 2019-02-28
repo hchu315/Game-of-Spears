@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   canvas.width = 1100;
   canvas.height = 700;
-  canvas.style.zIndex = "1";
+  // canvas.style.zIndex = "1";
 
   const game = new Game(ctx);
   // const ammo = new Ammo(ctx);
