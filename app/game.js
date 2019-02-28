@@ -143,15 +143,24 @@ class Game {
   win() {
     console.log('werk?')
     const endMenu = document.querySelector('#end-menu');
+    const canvas = document.querySelector('#game-canvas');
+    const timer = document.querySelector('.timer')
 
     endMenu.setAttribute("style", "visibility: visible;");
+    canvas.setAttribute("style", "z-index: -1;")
+    // timer.clearInterval(timerInterval);
+    // console.log(timer.clearInterval(timerInterval))
+
+
   }
 
   lose() {
     console.log('woop woop')
     const endMenu = document.querySelector('#end-menu');
+    const canvas = document.querySelector('#game-canvas');
 
     endMenu.setAttribute("style", "visibility: visible;");
+    canvas.setAttribute("style", "z-index: -1;")
   }
 
   render() {

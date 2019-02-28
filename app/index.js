@@ -57,12 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     timer.innerHTML = `Timer: ${defaultTime}`;
 
-    let test = setInterval(function () {
+    let timerInterval = setInterval(function () {
       // console.log(timer)
       timer.innerHTML = `Timer: ${defaultTime}`;
       defaultTime--;
       if (defaultTime < 0) {
-        clearInterval(test);
+        clearInterval(timerInterval);
         game.lose();
       }
     }.bind(this), 1000);
