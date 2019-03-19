@@ -125,7 +125,7 @@ class Game {
     if (this.clip.length > 0) {
       this.depleteAmmo();
     } else {
-      alert('Press R to Reload!')
+      alert('Outta Ammo! Press R to reload your weapon!')
       // this.hotTips('Reload!!!')
     }
   }
