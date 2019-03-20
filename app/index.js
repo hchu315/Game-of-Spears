@@ -32,8 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     game.onClick(x, y);
   }
   
-  canvas.addEventListener('mousedown', getMousePos, false);
-  canvas.addEventListener('keydown', game.reloadTheClip.bind(game), true);
+
   loadingText.addEventListener('transitionend', loadText);
   
   function loadText(e) {
@@ -78,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const playGame = () => {
+    canvas.addEventListener('mousedown', getMousePos, false);
+    canvas.addEventListener('keydown', game.reloadTheClip.bind(game), true);
     game.makeDragon();
     // game.loadTheClip();
     game.play();

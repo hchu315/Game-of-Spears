@@ -9,7 +9,7 @@ const dirNode = 'node_modules';
 const dirApp = path.join(__dirname, 'app');
 const dirAssets = path.join(__dirname, 'assets');
 
-const appHtmlTitle = 'Dragon Hunt 2018';
+const appHtmlTitle = 'Dragon Hunt';
 
 /**
  * Webpack Configuration

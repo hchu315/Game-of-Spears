@@ -95,15 +95,40 @@ class Game {
   depleteAmmo() {
     const missile = document.querySelector('.missile')
 
-    if (this.clip.length === 0) {
-      alert('Reload!');
-    } else {
+    // if (this.clip.length === 0) {
+    //   alert('Reload!');
+    // } else {
       missile.parentNode.removeChild(missile)
       this.clip.pop();
       // console.log('why?')
-    }
+    // }
 
       // console.log(this.clip)
+  }
+
+  explosion(x, y) {
+    // if (x === undefined) return;
+    // console.log('ok ok ok')
+    console.log(x, y)
+      const ctx = this.ctx;
+      let img = new Image();
+
+      // for (let i = 0; i < 9; i++) {
+      // img.onload = function() {
+      // };
+      // img.addEventListener("load", 
+      //   ctx.drawImage(img, this.explodeIndex * (1000 / this.explodeFrames), 0, 100, 100, x, y, this.explodeIndex * (1000 / this.explodeFrames), 100)
+      // );
+
+      // this.explodeIndex++
+      img.src = "https://i.imgur.com/lqEkVlw.png";
+
+      // img.onload();  
+      ctx.drawImage(img, 100, 100, 100, 100, 400, 400, 100, 100);
+      // }
+      // return;
+      // break;
+      // this.explodeIndex = 1;
   }
 
   onClick(x, y) {
@@ -124,6 +149,7 @@ class Game {
     // console.log(this.ammo)
     if (this.clip.length > 0) {
       this.depleteAmmo();
+      this.explosion(x, y);
     } else {
       alert('Outta Ammo! Press R to reload your weapon!')
       // this.hotTips('Reload!!!')
