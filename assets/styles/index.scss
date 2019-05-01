@@ -80,6 +80,10 @@ body {
     // justify-content; center;
 }
 
+#game-canvas:focus {
+    outline: none;
+}
+
 .start-menu {
     justify-content: center;
     align-items: center;
