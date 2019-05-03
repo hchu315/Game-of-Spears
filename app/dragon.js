@@ -1,9 +1,9 @@
 class Dragon {
-    constructor(ctx) {
+    constructor(ctx, x = 0, y = 0, alive = true) {
         this.ctx = ctx;
         this.randomdir = [-2, 2];
-        this.x = 0;
-        this.y = 0;
+        this.x = x;
+        this.y = y;
         this.dx = 2;
         this.dy = 2;
         setInterval(() => {
@@ -16,6 +16,7 @@ class Dragon {
         this.tickCount = 0;
         this.ticksPerFrame = 20;
 
+        this.alive = alive;
         this.explodeIndex = 3;
         this.explodeFrames = 10;
     }
@@ -87,19 +88,55 @@ class Dragon {
         const dy = this.dy;
         let img = new Image();
         img.src = "https://i.imgur.com/ZGOk4iR.png";
-        if (this.dx > 0) {
-          ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+        if (this.alive) {
+          if (this.dx > 0) {
+            ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
 
-          // number of frames refer to frames on the row being utilized on sprite sheet
+            // number of frames refer to frames on the row being utilized on sprite sheet
+          } else {
+            ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 470, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+          }
+          if (this.y + this.dy > 600 || this.y + this.dy < -50) {
+            this.dy = -this.dy;
+          }
+          // creates border around the canvas so the dragon doesn't fly off the screen forever
+          if (this.x + this.dx > 1100 || this.x + this.dx < -200) {
+            this.dx = -this.dx;
+          } 
+          
+          this.x += this.dx;
+          this.y += this.dy;
         } else {
-          ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 470, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+          ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 0, 190, 165, this.x, this.y, (573 / this.numberOfFrames), 150);
         }
-        if (this.y + this.dy > 600) {
-          this.dy = -this.dy;
-        } 
-        
-        this.x += this.dx;
-        this.y += this.dy;
+    }
+
+    dragonDies() {
+      console.log('hittin')
+      this.alive = false;
+      // const ctx = this.ctx;
+      // const dy = this.dy;
+      // let img = new Image();
+      // img.src = "https://i.imgur.com/ZGOk4iR.png";
+      // if (this.dx > 0) {
+      //   ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 150, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+
+        // number of frames refer to frames on the row being utilized on sprite sheet
+      // } 
+      // else {
+      //   ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 470, 200, 200, this.x, this.y, (573 / this.numberOfFrames), 150);
+      // }
+      // if (this.y + this.dy > 600 || this.y + this.dy < -50) {
+      //   this.dy = -this.dy;
+      // }
+      // creates border around the canvas so the dragon doesn't fly off the screen forever
+      // if (this.x + this.dx > 1100 || this.x + this.dx < -200) {
+      //   this.dx = -this.dx;
+      // }
+
+      // this.x += this.dx;
+      // this.y += this.dy;
+
     }
 
     render() {

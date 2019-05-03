@@ -21,19 +21,21 @@ class Game {
   
   destroyDragon(dragon) {
     let i;
-   
+    let deadDragon;
+
     for (i = 0; i < this.dragons.length; i++) {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
-        this.dragons.pop();  
+        deadDragon = this.dragons.pop();  
         this.dragonsRemaining(this.dragons);
-        // this.score+=10;
-        // this.dragon.explodeDragon(dragon.x, dragon.y);
+        // console.log(deadDragon.render)
+        // deadDragon.render().bind(this);
       } 
       else if (dragon === this.dragons[i]) {
-        this.dragons.splice(i, 1);
+        deadDragon = this.dragons.splice(i, 1);
         this.dragonsRemaining(this.dragons);
-        // this.score+=10;
-        // this.dragon.explodeDragon(dragon.x, dragon.y);
+        // console.log(deadDragon.render)
+
+        // deadDragon.render().bind(this);
       }
     }
 
@@ -51,11 +53,6 @@ class Game {
     const dragonCounter = document.querySelector('.dragon-counter') 
     dragonCounter.innerHTML = `Dragons Remaining: ${dragons.length}`
   }
-  // drawScore() {
-  //   this.ctx.font = "30px Arial";
-  //   this.ctx.fillStyle = "red";
-  //   this.ctx.fillText("Score: " + this.score, 18, 40);
-  // }
 
   play() {
     this.loop(()=> {
@@ -85,6 +82,10 @@ class Game {
   reloadTheClip(e) {
     if (e.keyCode !== 82 || this.clip.length !== 0) return;
 
+    const ammoIndicator = document.querySelector(".ammo-indicator")
+    const reloadNotice = document.querySelector(".reload-notice")
+    ammoIndicator.removeChild(reloadNotice);
+
     for (let index = 0; index < 3; index++) {
       this.clip.push(new Ammo(this.ctx, index));
       this.clip[index].createAmmo();
@@ -95,16 +96,24 @@ class Game {
   depleteAmmo() {
     const missile = document.querySelector('.missile')
 
-    // if (this.clip.length === 0) {
-    //   alert('Reload!');
-    // } else {
-      missile.parentNode.removeChild(missile)
-      this.clip.pop();
-      // console.log('why?')
-    // }
+    missile.parentNode.removeChild(missile)
+    this.clip.pop();
 
-      // console.log(this.clip)
+    if (!this.clip.length) {
+      console.log('it was kinda hittin')
+      const ammoIndicator = document.querySelector('.ammo-indicator');
+      const reloadNotice = document.createElement("span");
+      reloadNotice.classList.add("reload-notice"); 
+      reloadNotice.textContent = "Press R to Reload!!!"
+      ammoIndicator.appendChild(reloadNotice)
+    }
   }
+
+   // drawScore() {
+  //   this.ctx.font = "30px Arial";
+  //   this.ctx.fillStyle = "red";
+  //   this.ctx.fillText("Score: " + this.score, 18, 40);
+  // }
 
   explosion(x, y) {
     // if (x === undefined) return;
@@ -143,17 +152,15 @@ class Game {
       
       if (dist < 50 && this.clip.length > 0) {
         this.destroyDragon(dragon);
+        this.dragon.dragonDies(dragon.x, dragon.y);
       }
     })
     
     // console.log(this.ammo)
     if (this.clip.length > 0) {
       this.depleteAmmo();
-      this.explosion(x, y);
-    } else {
-      alert('Outta Ammo! Press R to reload your weapon!')
-      // this.hotTips('Reload!!!')
-    }
+      // this.explosion(x, y);
+    } 
   }
 
   // hotTips(text) {

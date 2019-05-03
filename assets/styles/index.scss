@@ -166,9 +166,23 @@ body {
 .ammo-indicator {
     // flex: 1 0 auto;
     color: red;
-    text-shadow: 0 0 10p #fff;
-
+    // text-shadow: 0 0 10p #fff;
 }
+
+// .reload-notice {
+//     // animation: 
+//     animation-name: flash;
+//     animation-duration: 0.2s;
+//     animation-timing-function: linear;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+//     animation-play-state: running;
+// }
+
+// @keyframes reloadNotice {
+//     from {color: red;}
+//     to {color: black;}
+// }
 
 .timer {
     // position: absolute;
