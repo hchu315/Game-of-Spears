@@ -12,6 +12,7 @@ class Game {
     this.clip = [];
     this.score = 0;
     this.replayGame = document.getElementById("start-menu");
+    this.dragonsRemain = this.dragons.length;
   }
 
   loop(fn) {
@@ -20,19 +21,37 @@ class Game {
   }
   
   destroyDragon(dragon) {
-    let i;
+    var i;
     let deadDragon;
 
     for (i = 0; i < this.dragons.length; i++) {
       if (dragon === this.dragons[i] && this.dragons.length === 2) {
-        deadDragon = this.dragons.pop();  
-        this.dragonsRemaining(this.dragons);
+        deadDragon = this.dragons[i];
+        // console.log(deadDragon)
+        this.dragons[i] = new Dragon(this.ctx, deadDragon.x, deadDragon.y, false)  
+        this.dragonsRemain--
+        // console.log(this.dragonsRemain)
+        // setTimeout(function() {
+          // this.dragons.pop()
+          // console.log(this.dragons.pop)
+          this.dragonsRemaining();
+          // console.log(this.dragons)
+        // }, 3000)
         // console.log(deadDragon.render)
         // deadDragon.render().bind(this);
       } 
       else if (dragon === this.dragons[i]) {
-        deadDragon = this.dragons.splice(i, 1);
-        this.dragonsRemaining(this.dragons);
+        deadDragon = this.dragons[i]
+        this.dragons[i] = new Dragon(this.ctx, deadDragon.x, deadDragon.y, false)
+        this.dragonsRemain--
+        // console.log(this.dragonsRemain)
+        // setTimeout(() => {
+          // console.log(i)
+          // this.dragons.splice(i, 1)
+          this.dragonsRemaining();
+          // console.log(this.dragons)
+        // }, 3000);
+        
         // console.log(deadDragon.render)
 
         // deadDragon.render().bind(this);
@@ -49,9 +68,11 @@ class Game {
     }     
   }
 
-  dragonsRemaining(dragons) {
+  dragonsRemaining() {
     const dragonCounter = document.querySelector('.dragon-counter') 
-    dragonCounter.innerHTML = `Dragons Remaining: ${dragons.length}`
+    // this.dragonsRemain = this.dragons.length
+    // console.log(length)
+    dragonCounter.innerHTML = `Dragons Remaining: ${this.dragonsRemain}`
   }
 
   play() {
@@ -152,7 +173,7 @@ class Game {
       
       if (dist < 50 && this.clip.length > 0) {
         this.destroyDragon(dragon);
-        this.dragon.dragonDies(dragon.x, dragon.y);
+        // this.dragon.dragonDies(dragon.x, dragon.y);
       }
     })
     

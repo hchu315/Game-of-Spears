@@ -1,24 +1,24 @@
 class Dragon {
-    constructor(ctx, x = 0, y = 0, alive = true) {
+    constructor(ctx, x = 0, y = 0, alive = true, randomDir = [-2, 2]) {
         this.ctx = ctx;
-        this.randomdir = [-2, 2];
+        this.randomDir = randomDir;
         this.x = x;
         this.y = y;
         this.dx = 2;
         this.dy = 2;
-        setInterval(() => {
-            this.dx = this.randomdir[Math.round(Math.random())];
-            this.dy = this.randomdir[Math.round(Math.random())];
-        }, 2000);
-
         this.frameIndex = 0;
         this.numberOfFrames = 3;
         this.tickCount = 0;
         this.ticksPerFrame = 20;
 
         this.alive = alive;
-        this.explodeIndex = 3;
-        this.explodeFrames = 10;
+        if (this.alive) { setInterval(() => {
+          this.dx = this.randomDir[Math.round(Math.random())];
+          this.dy = this.randomDir[Math.round(Math.random())];
+        }, 2000);
+        } 
+        // this.explodeIndex = 3;
+        // this.explodeFrames = 10;
     }
 
     updateFrame() {
@@ -108,12 +108,13 @@ class Dragon {
           this.y += this.dy;
         } else {
           ctx.drawImage(img, this.frameIndex * (573 / this.numberOfFrames), 0, 190, 165, this.x, this.y, (573 / this.numberOfFrames), 150);
+          this.y += (this.dy * 3);
         }
     }
 
-    dragonDies() {
-      console.log('hittin')
-      this.alive = false;
+    // dragonDies() {
+    //   console.log('hittin')
+    //   this.alive = false;
       // const ctx = this.ctx;
       // const dy = this.dy;
       // let img = new Image();
@@ -137,7 +138,7 @@ class Dragon {
       // this.x += this.dx;
       // this.y += this.dy;
 
-    }
+    // }
 
     render() {
         this.updateFrame();
