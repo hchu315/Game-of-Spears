@@ -94,6 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // UNCOMMENT THIS FOR STARTMENU
   startGame.addEventListener("click", () => {
     // scoreboardContainer.className = "scoreboard-container";
+    // canvas.setAttribute("style", "z-index: 1;");
+    if (startGame.textContent === "Play Again") location.reload();
     startMenu.setAttribute("style", "visibility: hidden;");
     playGame();
   });

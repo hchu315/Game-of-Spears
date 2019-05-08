@@ -9,11 +9,13 @@ class Game {
     this.dragon = new Dragon(ctx);
     this.ammo = new Ammo(ctx);
     this.dragons = [];
+    this.dropDragons = [];
     this.clip = [];
     this.score = 0;
     this.replayGame = document.getElementById("start-menu");
     this.dragonsRemain = this.dragons.length;
     this.level = 1;
+    this.score = 0;
   }
 
   loop(fn) {
@@ -28,27 +30,29 @@ class Game {
     for (i = 0; i < this.dragons.length; i++) {
       if (dragon === this.dragons[i]) {
         deadDragon = this.dragons[i];
-        // console.log(deadDragon)
-        this.dragons[i] = new Dragon(this.ctx, deadDragon.x, deadDragon.y, false)  
-        this.dragonsRemain--
+        let newDragon = new Dragon(
+            this.ctx,
+            deadDragon.x,
+            deadDragon.y,
+            false
+        );
+        // this.dragons[i] = new Dragon(this.ctx, deadDragon.x, deadDragon.y, false)  
+        // this.dragonsRemain--
         // console.log(this.dragonsRemain)
         // setTimeout(function() {
           this.dragons.splice(i, 1);
+          this.dropDragons.push(newDragon)
+          this.score += 100;
           // this.dragons.pop()
           // console.log(this.dragons.pop)
           this.dragonsRemaining();
+          this.nextWave();
           // console.log(this.dragons)
-        // }, 3000)
+        // }.bind(this), 3000)
         // console.log(deadDragon.render)
         // deadDragon.render().bind(this);
       } 
     }
-
-    if (!this.dragons.length && this.level < 2) {
-      this.level++;
-      this.makeDragon();
-    } else if (!this.dragons.length)
-      this.gameOver();
   }
    
   makeDragon() {
@@ -66,7 +70,7 @@ class Game {
     const dragonCounter = document.querySelector('.dragon-counter') 
     // this.dragonsRemain = this.dragons.length
     // console.log(length)
-    dragonCounter.innerHTML = `Dragons Remaining: ${this.dragonsRemain}`
+    dragonCounter.innerHTML = `Score: ${this.score}`
   }
 
   play() {
@@ -74,6 +78,9 @@ class Game {
       this.ctx.clearRect(0, 0, 1200, 800);
       this.render();
       this.dragons.forEach(dragon => {
+        dragon.render();
+      })
+      this.dropDragons.forEach(dragon => {
         dragon.render();
       })
       // this.clip.forEach(missile => missile.render());
@@ -122,6 +129,16 @@ class Game {
       reloadNotice.textContent = "Press R to Reload!!!"
       ammoIndicator.appendChild(reloadNotice)
     }
+  }
+
+  nextWave() {
+    if (!this.dragons.length && this.level < 2) {
+      this.level++;
+      this.makeDragon();
+      console.log('hittin')
+    } else if (!this.dragons.length) {
+      this.gameOver();
+    } 
   }
 
   gameWave() {
@@ -207,13 +224,23 @@ class Game {
   }
 
   win() {
-    console.log('werk?')
+    // console.log('werk?')
     const endMenu = document.querySelector('#end-menu');
     const canvas = document.querySelector('#game-canvas');
-    const timer = document.querySelector('.timer')
+    const startMenu = document.querySelector('#start-menu');
+    const button = document.querySelector('#start-game')
+    // const timer = document.querySelector('.timer')
 
-    endMenu.setAttribute("style", "visibility: visible;");
+    // endMenu.setAttribute("style", "visibility: visible;");
     canvas.setAttribute("style", "z-index: -1;")
+    startMenu.setAttribute("style", "visibility: visible;");
+    button.textContent = "Play Again";
+
+    // this.level = 1;
+
+    // for (clip in this.clip) {
+    //       this.depleteAmmo();
+    // }
     // timer.clearInterval(timerInterval);
     // console.log(timer.clearInterval(timerInterval))
 
@@ -221,7 +248,7 @@ class Game {
   }
 
   lose() {
-    console.log('woop woop')
+    // console.log('woop woop')
     const endMenu = document.querySelector('#end-menu');
     const canvas = document.querySelector('#game-canvas');
 
