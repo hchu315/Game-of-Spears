@@ -38,8 +38,6 @@ class Ammo {
     newImg.classList.add("missile");
 
     ammoIndicator.appendChild(newImg);
-    console.log('test')
-
   }
 
   render() {

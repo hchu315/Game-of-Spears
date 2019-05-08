@@ -50,31 +50,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function gameTimer() {
-    const timer = document.querySelector('.timer');
-    let defaultTime = 30;
+  // function gameTimer() {
+  //   const timer = document.querySelector('.timer');
+  //   let defaultTime = 30;
 
-    timer.innerHTML = `Timer: ${defaultTime}`;
+  //   timer.innerHTML = `Timer: ${defaultTime}`;
 
-    let timerInterval = setInterval(function () {
-      // console.log(timer)
-      timer.innerHTML = `Timer: ${defaultTime}`;
-      defaultTime--;
-      if (defaultTime < 0) {
-        clearInterval(timerInterval);
-        game.lose();
-      }
-    }.bind(this), 1000);
+  //   let timerInterval = setInterval(function () {
+  //     // console.log(timer)
+  //     timer.innerHTML = `Timer: ${defaultTime}`;
+  //     defaultTime--;
+  //     if (defaultTime < 0) {
+  //       clearInterval(timerInterval);
+  //       game.lose();
+  //     }
+  //   }.bind(this), 1000);
 
-    // timingFxn();  
-    // if (this.defaultTime === 0) {
-    //   clearInterval()
-    // }
+  //   // timingFxn();  
+  //   // if (this.defaultTime === 0) {
+  //   //   clearInterval()
+  //   // }
 
-    // ctx.font = "30px Arial";
-    // ctx.fillStyle = "red";
-    // ctx.fillText('Timer: ' + this.defaultTime, 60, 60)
-  }
+  //   // ctx.font = "30px Arial";
+  //   // ctx.fillStyle = "red";
+  //   // ctx.fillText('Timer: ' + this.defaultTime, 60, 60)
+  // }
 
   const playGame = () => {
     canvas.addEventListener('mousedown', getMousePos, false);
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     game.makeDragon();
     // game.loadTheClip();
     game.play();
-    gameTimer();
+    // gameTimer();
     game.dragonsRemaining(game.dragons);
     // console.log(game.clip)
     game.clip.forEach(missile => missile.createAmmo())

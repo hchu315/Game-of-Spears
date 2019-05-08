@@ -1,11 +1,11 @@
 class Dragon {
-    constructor(ctx, x = 0, y = 0, alive = true, randomDir = [-2, 2]) {
+    constructor(ctx, x = -160, y = Math.random() * 600, alive = true, randomDir = [-2, 2]) {
         this.ctx = ctx;
         this.randomDir = randomDir;
         this.x = x;
         this.y = y;
-        this.dx = 2;
-        this.dy = 2;
+        this.dx = 3;
+        this.dy = 3;
         this.frameIndex = 0;
         this.numberOfFrames = 3;
         this.tickCount = 0;

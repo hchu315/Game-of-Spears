@@ -13,6 +13,7 @@ class Game {
     this.score = 0;
     this.replayGame = document.getElementById("start-menu");
     this.dragonsRemain = this.dragons.length;
+    this.level = 1;
   }
 
   loop(fn) {
@@ -25,13 +26,14 @@ class Game {
     let deadDragon;
 
     for (i = 0; i < this.dragons.length; i++) {
-      if (dragon === this.dragons[i] && this.dragons.length === 2) {
+      if (dragon === this.dragons[i]) {
         deadDragon = this.dragons[i];
         // console.log(deadDragon)
         this.dragons[i] = new Dragon(this.ctx, deadDragon.x, deadDragon.y, false)  
         this.dragonsRemain--
         // console.log(this.dragonsRemain)
         // setTimeout(function() {
+          this.dragons.splice(i, 1);
           // this.dragons.pop()
           // console.log(this.dragons.pop)
           this.dragonsRemaining();
@@ -40,31 +42,23 @@ class Game {
         // console.log(deadDragon.render)
         // deadDragon.render().bind(this);
       } 
-      else if (dragon === this.dragons[i]) {
-        deadDragon = this.dragons[i]
-        this.dragons[i] = new Dragon(this.ctx, deadDragon.x, deadDragon.y, false)
-        this.dragonsRemain--
-        // console.log(this.dragonsRemain)
-        // setTimeout(() => {
-          // console.log(i)
-          // this.dragons.splice(i, 1)
-          this.dragonsRemaining();
-          // console.log(this.dragons)
-        // }, 3000);
-        
-        // console.log(deadDragon.render)
-
-        // deadDragon.render().bind(this);
-      }
     }
 
-    this.gameOver(this.dragons);
+    if (!this.dragons.length && this.level < 2) {
+      this.level++;
+      this.makeDragon();
+    } else if (!this.dragons.length)
+      this.gameOver();
   }
    
   makeDragon() {
     let i;
-    for (i=0; i < 6; i++) {
-      this.dragons.push(new Dragon(this.ctx));
+    for (i=0; i < 2; i++) {
+      if (this.level === 1) {
+        this.dragons.push(new Dragon(this.ctx));
+      } else {
+        this.dragons.push(new Dragon(this.ctx, undefined, undefined, undefined, [-4, 4]))
+      }
     }     
   }
 
@@ -130,6 +124,24 @@ class Game {
     }
   }
 
+  gameWave() {
+    const timer = document.querySelector('.timer');
+    // let defaultTime = 30;
+
+    timer.innerHTML = `Wave: ${this.level} of 2`;
+
+    // let timerInterval = setInterval(function () {
+    //   // console.log(timer)
+    //   timer.innerHTML = `Timer: ${defaultTime}`;
+    //   defaultTime--;
+    //   if (defaultTime < 0) {
+    //     clearInterval(timerInterval);
+    //     game.lose();
+    //   }
+    // }.bind(this), 1000);
+  }
+
+
    // drawScore() {
   //   this.ctx.font = "30px Arial";
   //   this.ctx.fillStyle = "red";
@@ -191,7 +203,7 @@ class Game {
   // }
 
   gameOver() {
-    return this.dragons.length ? '' : this.win() ;
+    this.win();
   }
 
   win() {
@@ -219,6 +231,7 @@ class Game {
 
   render() {
     this.screen.background();
+    this.gameWave();
     // this.screen.killCount();
     // this.drawScore();
     // this.loadTheClip();
