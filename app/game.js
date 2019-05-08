@@ -57,7 +57,7 @@ class Game {
    
   makeDragon() {
     let i;
-    for (i=0; i < 2; i++) {
+    for (i=0; i < 5; i++) {
       if (this.level === 1) {
         this.dragons.push(new Dragon(this.ctx));
       } else {
