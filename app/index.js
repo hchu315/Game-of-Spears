@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingText = document.querySelector('.loading-text');
   const startGame = document.getElementById("start-game");
   const startMenu = document.getElementById("start-menu");
+  const gameName = document.getElementById("game-name");
+  const gameBackground = document.getElementById("dragon-background");
   
   canvas.width = 1100;
   canvas.height = 700;
@@ -97,6 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // canvas.setAttribute("style", "z-index: 1;");
     if (startGame.textContent === "Play Again") location.reload();
     startMenu.setAttribute("style", "visibility: hidden;");
+    gameName.setAttribute("style", "visibility: visible;");
+    gameBackground.setAttribute("style", "visibility: hidden;");
     playGame();
   });
 

@@ -3,7 +3,7 @@
 // http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 html {
     box-sizing: border-box;
-    // background-color: black;
+    background-color: black;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -18,14 +18,39 @@ body {
     margin: 0;
     width: 100%;
     height: 100vh;
-    // background-color: green;
 }
 
-.audio {
+.my-links {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    top: 0;
+}
+
+.game-name {
+    font-size: 40px;
+    font-family: cursive;
+    color: white;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+}
+
+.dragon-background {
+    // position: absolute;
+    // display: flex;
+    position: absolute;
+    top: 0;
+    left: 260px;
+}
+
+// .audio {
     // position: absolute;
     // right: 1100px;
 
-}
+// }
+
 .game-title {
     // font-family: cursive;
     // font-size: 70px;
@@ -151,6 +176,7 @@ body {
 
 .game-navbar {
     display: flex;
+    justify-content: space-around;
     width: 1120px;
     height: 90px;
     // flex: 1;
@@ -165,7 +191,7 @@ body {
 }
 
 .game-navbar-sections {
-    width: 33%;
+    max-width: 33%;
 }
 
 .ammo-indicator {
