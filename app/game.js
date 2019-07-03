@@ -10,6 +10,7 @@ class Game {
     this.ammo = new Ammo(ctx);
     this.dragons = [];
     this.dropDragons = [];
+    this.exploding = [];
     this.clip = [];
     this.score = 0;
     this.replayGame = document.getElementById("start-menu");
@@ -83,6 +84,10 @@ class Game {
       this.dropDragons.forEach(dragon => {
         dragon.render();
       })
+      this.exploding.forEach(explosive => {
+        explosive.render();
+      })
+      
       // this.clip.forEach(missile => missile.render());
     });
     
@@ -206,6 +211,7 @@ class Game {
       }
     })
     
+    this.explosive.push()
     // console.log(this.ammo)
     if (this.clip.length > 0) {
       this.depleteAmmo();
