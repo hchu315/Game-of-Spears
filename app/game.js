@@ -85,9 +85,10 @@ class Game {
         dragon.render();
       })
       this.exploding.forEach(explosive => {
-        explosive.render();
+        explosive.draw();
       })
-      
+      // this.explosive.draw();
+      this.exploding.pop();
       // this.clip.forEach(missile => missile.render());
     });
     
@@ -127,7 +128,6 @@ class Game {
     this.clip.pop();
 
     if (!this.clip.length) {
-      console.log('it was kinda hittin')
       const ammoIndicator = document.querySelector('.ammo-indicator');
       const reloadNotice = document.createElement("span");
       reloadNotice.classList.add("reload-notice"); 
@@ -140,7 +140,6 @@ class Game {
     if (!this.dragons.length && this.level < 2) {
       this.level++;
       this.makeDragon();
-      console.log('hittin')
     } else if (!this.dragons.length) {
       this.gameOver();
     } 
@@ -211,12 +210,18 @@ class Game {
       }
     })
     
-    this.explosive.push()
+   
     // console.log(this.ammo)
     if (this.clip.length > 0) {
       this.depleteAmmo();
+      if (this.exploding.length < 1) {
+        this.exploding.push(new Ammo(this.ctx, x-50, y-50))
+        console.log(x)
+        console.log(y)
+      }
       // this.explosion(x, y);
     } 
+    console.log(this.exploding)
   }
 
   // hotTips(text) {

@@ -1,10 +1,22 @@
 class Ammo {
-  constructor(ctx, yPos) {
+  constructor(ctx, x, y) {
     this.ctx = ctx;
-    // this.clip = []
-    this.yPos = 25 * yPos + 25 ;
+    this.x = x;
+    this.y = y;
+    // this.yPos = 25 * yPos + 25;
   }
 
+  draw() {
+    const ctx = this.ctx;
+    // const dy = this.dy;
+    let img = new Image();
+    img.src = "https://i.imgur.com/lqEkVlw.png";
+    ctx.drawImage(img, 0, 300, 100, 100, this.x, this.y, 100, 100)
+    console.log('split here')
+    console.log(this.x)
+    console.log(this.y)
+    // console.log('werk werk werk')
+  }
   // createAmmo() {
   //   const ctx = this.ctx;
   //   // const yPos = this.clip.length  * 25 + 25 
@@ -41,7 +53,7 @@ class Ammo {
   }
 
   render() {
-    this.createAmmo();
+    // this.createAmmo();
 
     // console.log(this.clip)
     // this.createAmmo();
